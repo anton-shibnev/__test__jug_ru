@@ -1,0 +1,7 @@
+extends ../_includes/layout.pug
+include components/Hero/Hero
+include components/Question/Question
+
+block content
+  +Hero(DATA.hero)
+  +Question(DATA.question)

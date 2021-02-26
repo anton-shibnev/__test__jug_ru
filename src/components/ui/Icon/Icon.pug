@@ -1,0 +1,5 @@
+mixin Icon(name, is='div')
+  - const iconPath = `src/assets/svg`
+
+  #{is}.icon&attributes(attributes)
+    img(inline src=`${iconPath}/${name}.svg`)

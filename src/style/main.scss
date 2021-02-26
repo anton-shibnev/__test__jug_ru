@@ -1,0 +1,12 @@
+/*
+  install this for glob
+  https://www.npmjs.com/package/node-sass-glob-importer
+*/
+
+@import './modules/mixins/*.scss';
+@import './modules/config/*.scss';
+@import './modules/normalize.scss';
+@import './modules/helpers/*.scss';
+@import './modules/global.scss';
+
+@import '../pages/_includes/layout.scss';

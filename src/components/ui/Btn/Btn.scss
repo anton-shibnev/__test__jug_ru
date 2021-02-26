@@ -1,0 +1,71 @@
+%btn-primary {
+  background-color: $primary;
+  color: $black;
+
+  @include hover() {
+    background-color: #e6b901;
+  }
+}
+
+%btn-secondary {
+  background-color: $black;
+  color: $white;
+
+  @include hover() {
+    background-color: rgba($black, 0.8);
+  }
+}
+
+%btn-bordered {
+  background-color: rgba($white, 0);
+  color: $black;
+  border: rem(1px) solid rgba($black, 0.16);
+}
+
+.btn {
+  @extend %btn-reset;
+  @include height(
+    (
+      'mob': 42px,
+      'xs': 50px,
+      'lg': 64px,
+    )
+  );
+  @include font(
+    (
+      'mob': 11px,
+      'xs': 14px,
+      'lg': 18px,
+    ),
+    1.5,
+    normal
+  );
+
+  @include _(
+    border-radius,
+    (
+      'mob': 7px,
+      'xs': 11px,
+      'lg': 12px,
+    ),
+    true
+  );
+
+  display: flex;
+  align-items: center;
+  transition: background-color $trs;
+  text-align: center;
+  justify-content: center;
+
+  &--secondary {
+    @extend %btn-secondary;
+  }
+
+  &--primary {
+    @extend %btn-primary;
+  }
+
+  &--bordered {
+    @extend %btn-bordered;
+  }
+}

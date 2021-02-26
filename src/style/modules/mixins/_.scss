@@ -1,0 +1,23 @@
+@mixin __init($property, $val, $toRem) {
+  @if ($toRem) {
+    #{$property}: rem($val);
+  } @else {
+    #{$property}: $val;
+  }
+}
+
+@mixin _($property, $arr, $toRem: false) {
+  @if (type-of($arr) == 'map') {
+    @each $bp-name, $val in $arr {
+      @if ($bp-name == 'mob') {
+        @include __init($property, $val, $toRem);
+      } @else {
+        @media #{mq($bp-name)} {
+          @include __init($property, $val, $toRem);
+        }
+      }
+    }
+  } @else {
+    @include __init($property, $arr, $toRem);
+  }
+}

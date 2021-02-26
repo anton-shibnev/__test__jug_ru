@@ -1,0 +1,27 @@
+include /components/ui/Pic/Pic
+include /components/ui/Icon/Icon
+include /components/ui/Btn/Btn
+include /components/ui/Container/Container
+
+mixin Hero({title, desc, btnList, bg})
+  - const B = `hero`;
+
+  section(class=`${B}`)
+    div(class=`${B}__bg`)
+      +Pic('' ,bg , 'png')(class=`${B}__bg-icons`)
+      div(class=`${B}__stripe`)
+
+    +Container()(class=`${B}__container`)
+      div(class=`${B}__wrap`)
+        +Icon('logo')(class=`${B}__logo`)
+
+        h1(class=`${B}__title`) #{ title }
+
+        div(class=`${B}__wrap-desc`)
+          each p in desc 
+            p(class=`${B}__desc`) #{ p }
+
+        div(class=`${B}__btn-group`)
+          each btn in btnList
+            +Btn(btn.type)(class=`${B}__btn`) #{ btn.label }
+              +Pic('' ,btn.icon, 'png')(class=`${B}__btn-icon`)

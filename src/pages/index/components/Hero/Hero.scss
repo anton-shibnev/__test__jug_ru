@@ -1,0 +1,278 @@
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  background-color: $white;
+  position: relative;
+  overflow-x: hidden;
+  display: block;
+
+  &__bg {
+    @include height(
+      (
+        'mob': 233px,
+        'xs': 224px,
+        'lg': auto,
+      )
+    );
+    @include position(
+      (
+        'mob': relative,
+        'lg': static,
+      )
+    );
+    pointer-events: none;
+  }
+
+  &__logo {
+    @include svg-icon(0);
+
+    @include wh-arr(
+      (
+        'mob': (
+          111px,
+          38px,
+        ),
+        'xs': (
+          126px,
+          41px,
+        ),
+      )
+    );
+
+    @include margin-left(
+      (
+        'xs': 4px,
+      )
+    );
+  }
+
+  &__wrap {
+    @include padding-bottom(
+      (
+        'mob': 50px,
+      )
+    );
+    @include padding-top(
+      (
+        'lg': 150px,
+      )
+    );
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    z-index: 10;
+  }
+
+  &__title {
+    @include font(
+      (
+        'mob': 28px,
+        'xs': 36px,
+        'lg': 50px,
+      ),
+      1.2,
+      bold
+    );
+
+    @include margin-top(
+      (
+        'mob': 30px,
+        'xs': 50px,
+        'lg': 56px,
+      )
+    );
+
+    @include _(
+      max-width,
+      (
+        'mob': 462px,
+      )
+    );
+  }
+
+  &__wrap-desc {
+    @include margin-top(
+      (
+        'mob': 20px,
+        'xs': 22px,
+      )
+    );
+    display: grid;
+    grid-gap: rem(8px);
+
+    @include _(
+      max-width,
+      (
+        'mob': 450px,
+        'lg': 510px,
+      ),
+      true
+    );
+  }
+
+  &__desc {
+    @include font(
+      (
+        'mob': 12px,
+        'xs': 16px,
+        'lg': 18px,
+      ),
+      1.5,
+      300
+    );
+  }
+
+  $icon-wh: (
+    'mob': 28px,
+    'xs': 52px,
+  );
+
+  &__btn-group {
+    @include margin-top(
+      (
+        'mob': 31px,
+        'xs': 36px,
+        'lg': 65px,
+      )
+    );
+
+    @include grid-gap(
+      (
+        'mob': 15px,
+        'lg': 21px,
+      )
+    );
+
+    @include grid-template-columns(
+      (
+        'mob': repeat(2, 1fr),
+        'xs': repeat(2, rem(205px)),
+        'lg': repeat(2, rem(210px)),
+      )
+    );
+
+    display: grid;
+  }
+
+  &__btn {
+    position: relative;
+    @include margin-top($icon-wh);
+  }
+
+  &__btn-icon {
+    @include wh-arr($icon-wh);
+    @include top(
+      (
+        'mob': calc(-100% + 15px),
+        'xs': -100%,
+        'lg': calc(-100% + 15px),
+      )
+    );
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    object-fit: contain;
+  }
+
+  &__bg-icons {
+    position: absolute;
+    z-index: 10;
+    object-fit: contain;
+
+    @include width(
+      (
+        'mob': 84.5%,
+        'xs': 56.4%,
+        'lg': 50.9%,
+      )
+    );
+
+    @include top(
+      (
+        'mob': 24.5%,
+        'xs': 40%,
+        'lg': 23.5%,
+      )
+    );
+    @include right(
+      (
+        'mob': 0,
+        'xs': -1%,
+        'lg': 0,
+      )
+    );
+  }
+  $stripe-size: 30%;
+  $color1: $white;
+  $color2: $black;
+
+  &__stripe {
+    @include width(
+      (
+        'mob': 86.1%,
+        'xs': 60%,
+      )
+    );
+    @include height(
+      (
+        'mob': 110%,
+        'xs': 180%,
+        'lg': 100%,
+      )
+    );
+
+    @include top(
+      (
+        'mob': -37%,
+        'xs': -63%,
+        'lg': -14%,
+      )
+    );
+
+    @include right(
+      (
+        'mob': -21.6%,
+        'xs': -16%,
+      )
+    );
+
+    @include clip-path(
+      (
+        'lg': polygon(0 -100%, 100% 50%, 50% 100%, 0 50%),
+      )
+    );
+    position: absolute;
+    overflow: hidden;
+    transform: rotate(-45deg);
+
+    @include pseudo() {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: calc(100% + #{$stripe-size * 2});
+      height: 100%;
+      background: repeating-linear-gradient(
+        90deg,
+        $color2 25%,
+        $color2 50%,
+        $color1 50%,
+        $color1 75%
+      );
+      background-size: $stripe-size $stripe-size;
+      animation: stripeTransform 2s linear infinite;
+    }
+  }
+
+  @keyframes stripeTransform {
+    0% {
+      transform: translateX(-#{$stripe-size / 2});
+    }
+
+    100% {
+      transform: translateX(0);
+    }
+  }
+}

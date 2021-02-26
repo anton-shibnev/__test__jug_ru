@@ -1,0 +1,43 @@
+include /components/ui/Container/Container
+include /components/ui/Input/Input
+include /components/ui/Btn/Btn
+include /components/ui/Icon/Icon
+
+mixin Question({yesBlock, noBlock, back})
+  - const B = `question`;
+
+  div(class=`${B}` id=`${B}`)&attributes(attributes)
+    +Container()(class=`${B}__container`)
+
+      div(class=`${B}__row`)
+
+        div(class=`${B}__box ${B}__box--light`)
+          div(class=`${B}__box-modal ${B}__box-modal--light` id='lightBoxModal')
+            div(class=`${B}__box-modal-desc`) Спасибо, что подписались на нашу рассылку!
+          div(class=`${B}__box-top`)
+            +Pic('', yesBlock.icon, 'png')(class=`${B}__box-icon`)
+            div(class=`${B}__box-title`) #{ yesBlock.title }
+          div(class=`${B}__box-body`)
+
+            form(class=`${B}__box-form` id='form')
+              +Input('email', 'input', 'input', yesBlock.input.placeholder, false, true)(class=`${B}__box-form-input`)
+              +Btn('bordered')(class=`${B}__box-form-btn`) #{ yesBlock.btn.label }
+            p(class=`${B}__box-pd`) !{ yesBlock.pd }
+
+
+
+        div(class=`${B}__box ${B}__box--dark`)
+          div(class=`${B}__box-modal ${B}__box-modal--dark` id='darkBoxModal')
+            +Pic('', 'like', 'png')(class=`${B}__box-modal-icon`)
+            div(class=`${B}__box-modal-title`) Спасибо, что поделились!
+          div(class=`${B}__box-top`)
+            +Pic('', noBlock.icon, 'png')(class=`${B}__box-icon`)
+            div(class=`${B}__box-title`) #{ noBlock.title }
+          div(class=`${B}__box-body`)
+            div(class=`${B}__box-btn-list`)
+              each btn in noBlock.btnList
+                +Btn('light')(class=`${B}__box-no-btn`) #{ btn }
+
+      button(class=`${B}__back` id='questionBack')
+        +Icon('arrow')(class=`${B}__back-icon`)
+        span #{ back } 

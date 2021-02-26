@@ -1,0 +1,20 @@
+%link, .link {
+  text-decoration: underline;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+
+  @include hover() {
+    color: $black;
+  }
+
+  &--dark {
+    color: $black;
+
+    @include hover() {
+      color: $primary;
+    }
+  }
+}
