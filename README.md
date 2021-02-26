@@ -1,7 +1,7 @@
 # Webpack Boilerplate
 
 # github page
-[click me!](https://shibnev.github.io/__test__jug_ru/dist/index.html)
+[click me!](https://shibnev.github.io/__test__jug_ru/dist/)
 ## Usage
 
 ### Development server
